@@ -4,12 +4,21 @@
     "title": "CrescimentoExponencial",
     "version": "v1"
   },
+  "servers": [
+    {
+      "url": "http://localhost:5000"
+    },
+    {
+      "url": "http://www.crescimentoexponencial.com"
+    }
+  ],
   "paths": {
     "/TreinoControler": {
       "get": {
         "tags": [
           "TreinoControler"
         ],
+        "summary": "Obter todos os treinos",
         "responses": {
           "200": {
             "description": "Success"
@@ -20,7 +29,9 @@
         "tags": [
           "TreinoControler"
         ],
+        "summary": "Cadastra novo treino",
         "requestBody": {
+          "description": "",
           "content": {
             "application/json": {
               "schema": {
@@ -54,11 +65,13 @@
         "properties": {
           "name": {
             "type": "string",
-            "nullable": true
+            "nullable": true,
+            "example": "Supino reto"
           },
           "repeticoes": {
             "type": "integer",
-            "format": "int32"
+            "format": "int32",
+            "example": 15
           }
         },
         "additionalProperties": false
