@@ -2,8 +2,7 @@ name: Sync OAS to ReadMe
 on:
   push:
     branches:
-      - master
-      - main
+      - criando-pipeline
 jobs:
   build:
     runs-on: ubuntu-latest
