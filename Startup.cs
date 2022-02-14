@@ -10,7 +10,9 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace CrescimentoExponencial
@@ -32,6 +34,15 @@ namespace CrescimentoExponencial
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "CrescimentoExponencial", Version = "v1" });
+                c.SwaggerGeneratorOptions.Servers =
+               new List<OpenApiServer> {
+                    new() {Url = "http://localhost:5000" },
+                    new() {Url = "http://www.crescimentoexponencial.com" }
+
+               };
+                string xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var filePath = Path.Combine(System.AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(filePath);
             });
 
             services.AddSingleton<TreinoRepository>();

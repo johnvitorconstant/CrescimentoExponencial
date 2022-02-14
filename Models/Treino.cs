@@ -2,9 +2,9 @@
 
 namespace CrescimentoExponencial.Models
 {
-    public class TreinoDto
+    public class Treino
     {
-        public TreinoDto( string name, int repeticoes)
+        public Treino( string name, int repeticoes)
         {
            
             Name = name;
@@ -12,10 +12,12 @@ namespace CrescimentoExponencial.Models
           
         }
 
-   
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+
         public string Name { get; set; }
         public int Repeticoes { get; set; }
-  
+        public DateTime DataDeCadastro { get; set; } = DateTime.Now;
 
 
     }
